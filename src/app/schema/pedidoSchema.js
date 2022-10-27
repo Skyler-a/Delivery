@@ -5,18 +5,29 @@ const pedidoSchema = new mongoose.Schema(
     clienteId: {
         type: mongoose.Schema.Types.ObjectId,
 		ref: "cliente",
-		require: true
+		required: true
+    },
+    entregadorId: {
+        type: mongoose.Schema.Types.ObjectId,
+		ref: "employee",
+    },
+    nomeDoEntregador: {
+        type: String
     },
     produtos: [{
         produtoId:{
             type: mongoose.Schema.Types.ObjectId,
 		    ref: "cardapio",
-		    require: true
+		    required: true
+        },
+        nomeDoProduto: {
+            type: String
         },
         numeroDeItens: {
             type: Number,
             required: true
-        }
+        },
+        _id: false
     }],
     valorTotal: {
         type: Number,

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcript = require('bcryptjs');
 
 const clienteSchema = new mongoose.Schema(
   {
@@ -19,6 +20,10 @@ const clienteSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true
+    },
+    senha: {
+      type: String,
+      required: true
     },
     fidelidade: {
       type: String
@@ -57,6 +62,12 @@ const clienteSchema = new mongoose.Schema(
     versionKey: false
   }
 );
+
+clienteSchema.pre('save', async function senha(next) {
+  const hash = await bcript.hash(this.senha, 10);
+  this.senha = hash;
+  next();
+});
 
 const cliente = mongoose.model('cliente', clienteSchema);
 module.exports = cliente;

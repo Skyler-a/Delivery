@@ -10,6 +10,12 @@ class cardapioRepository{
     async verProdutosPorId(id){
         return cardapioSchema.findById(id)
     }
+    async atualizarProduto(id, body){
+        return cardapioSchema.findByIdAndUpdate(id, body)
+    }
+    async deletarUmProduto(id){
+        return cardapioSchema.findByIdAndDelete(id)
+    }
 }
 
 module.exports = new cardapioRepository()

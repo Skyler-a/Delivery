@@ -9,6 +9,14 @@ class CardapioService {
         const result = await CardapioRepository.verProdutos()
         return result
     }
+    async atualizarProduto(id, body){
+        const result = await CardapioRepository.atualizarProduto(id, body)
+        return result
+    }
+    async deletarUmProduto(id){
+        const result = await CardapioRepository.deletarUmProduto(id)
+        return result
+    }
 }
 
 module.exports = new CardapioService()

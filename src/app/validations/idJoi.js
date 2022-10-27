@@ -10,4 +10,8 @@ const validarIdPedido = joi.object({
   id_pedido: joi.string().regex(id).message('Your Id was out-standard')
 });
 
-module.exports = { validarId, validarIdPedido };
+const validarIdEntregador = joi.object({
+  idEntregador: joi.string().regex(id).message('Your Id was out-standard').required()
+});
+
+module.exports = { validarId, validarIdPedido, validarIdEntregador };
